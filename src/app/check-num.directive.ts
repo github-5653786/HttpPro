@@ -9,6 +9,7 @@ export class CheckNumDirective {
   constructor(private el: ElementRef) { }
   @HostListener('keydown', ['$event'])
   onKeyDown(event) {
+    // my own code
     let e = <KeyboardEvent>event;
     const val = this.el.nativeElement.value ? this.el.nativeElement.value.length : 0;
     if (e.keyCode > 31 && (e.keyCode < 48 || e.keyCode > 57 || e.shiftKey || val == this.OnlyNumbers)) {
