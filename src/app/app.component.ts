@@ -138,5 +138,16 @@ export class AppComponent {
       event.target.value = output;
     }
   }
+
+  AdharSpace(evt) {
+    var adhar = evt.target.value;
+    if (adhar.length === 4) {
+      adhar = [adhar.slice(0, 4), ' ', adhar.slice(4)].join('');
+    }
+    if (adhar.length === 9) {
+      adhar = [adhar.slice(0, 9), ' ', adhar.slice(9)].join('');
+    }
+    evt.target.value = adhar;
+  }
 }
 
