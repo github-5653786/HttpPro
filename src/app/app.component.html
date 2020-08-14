@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
-      <label for="bikebrancd">Enter Code</label>
+      <label for="bikebrancd">Enter Vehicle Number</label>
       <input type="text" (keyup)="go($event)" style="text-transform: uppercase;" name="dobss" maxlength="10"
         placeholder="Enter Code" [(ngModel)]="Code" class="form-control">
       <button type="button" id="btn" (click)="SendData(Code)" class="btn btn-primary">Send</button>
@@ -40,6 +40,11 @@
       <label for="bikebdrancd">Enter Date Of Birth(My Own Practice)</label>
       <input type="text" [(ngModel)]="dat" placeholder="DD-MM-YYYY" maxlength="10" id="vadnt" class="form-control"
         (keyup)="AddSlash($event)">
+    </div>
+
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebdrancd">Enter Date Of Birth(From Directive)</label>
+      <input type="text" [(ngModel)]="datess" maxlength="10" placeholder="DD-MM-YYYY" DateOfBirth id="vadnt" class="form-control">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">

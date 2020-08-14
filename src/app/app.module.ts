@@ -9,11 +9,13 @@ import { HttpModule } from "@angular/http";
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { CheckNumDirective } from './check-num.directive';
 import { TouppercaseDirective } from './touppercase.directive';
+import { DateOfBirthDirective } from './date-of-birth.directive';
 @NgModule({
   declarations: [
     AppComponent,
     CheckNumDirective,
     TouppercaseDirective,
+    DateOfBirthDirective,
   ],
   imports: [
     BrowserModule,
