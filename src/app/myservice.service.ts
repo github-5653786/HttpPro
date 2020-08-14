@@ -16,4 +16,8 @@ export class MyserviceService {
   posts(data: any) {
     return this.http.post('https://direct-prod-directportal.godigit.com/DirectPortal/bike/variant/match/characteristics', data);
   }
+
+  GetCode(flow: any) {
+    return this.http.get('https://direct-prod-directportal.godigit.com/DirectPortal/cities/rtocode/region?regionCode=ka' + flow);
+  }
 }

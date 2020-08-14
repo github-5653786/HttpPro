@@ -10,10 +10,10 @@ export class CheckNumDirective {
   @HostListener('keydown', ['$event'])
   onKeyDown(event) {
     // my own code
-    let e = <KeyboardEvent>event;
     const val = this.el.nativeElement.value ? this.el.nativeElement.value.length : 0;
-    if (e.keyCode > 31 && (e.keyCode < 48 || e.keyCode > 57 || e.shiftKey || val == this.OnlyNumbers)) {
-      e.preventDefault();
+    if (event.keyCode > 31 && (event.keyCode < 48 || event.keyCode > 57 || event.shiftKey || val == this.OnlyNumbers)) {
+      // event.preventDefault();
+      return false;
     }
   }
 }

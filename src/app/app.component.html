@@ -6,22 +6,48 @@
   <div class="row mask mt-5">
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebrancd">Enter Bike Brand</label>
-      <input [(ngModel)]="selected" id="brand" (ngModelChange)="selectBrand($event)"
-        (typeaheadOnSelect)="bikeBrandSelect($event)" [typeahead]="bike" class="form-control" toUpperCase>
+      <input [(ngModel)]="select" id="brand" (ngModelChange)="selectBrand($event)" style="text-transform: uppercase;"
+        (typeaheadOnSelect)="bikeBrandSelect($event)" [typeahead]="bike" class="form-control" toUpperCase
+        placeholder="Search Brand">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebdrancd">Enter Bike varient</label>
-      <input [(ngModel)]="selected2" id="varient" (focus)="autofocus()" [typeahead]="varient" [typeaheadMinLength]="0"
-        class="form-control">   
+      <input [(ngModel)]="selected2" placeholder="Search Brand Varient" id="varient" (focus)="autofocus()"
+        [typeahead]="varient" [typeaheadMinLength]="0" class="form-control">
     </div>
 
-    <div class="container">
-      <div class="col-xs-12 col-12 col-md-6">
-        <label for="bikebrancd">Enter your Phone Number</label>
-        <input type="text" OnlyNumbers="10" class="form-control">
-      </div>
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebrancd">Enter your Phone Number</label>
+      <input type="text" OnlyNumbers="10" placeholder="Phone" name="fds" [(ngModel)]="inputs"
+        (ngModelChange)="input($event)" class="form-control">
     </div>
+
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebrancd">Enter your DOB</label>
+      <input type="text" name="dobs" placeholder="DD/MM/YYYY" (keyup)="dobWithSlash($event)" [(ngModel)]="dob"
+        class="form-control">
+      <button type="button" (click)="validate()" class="btn btn-primary">Primary</button>
+    </div>
+
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebrancd">Enter Code</label>
+      <input type="text" (keyup)="go($event)" style="text-transform: uppercase;" name="dobss" maxlength="10"
+        placeholder="Enter Code" [(ngModel)]="Code" class="form-control">
+      <button type="button" id="btn" (click)="SendData(Code)" class="btn btn-primary">Send</button>
+    </div>
+
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebdrancd">Enter Date Of Birth(My Own Practice)</label>
+      <input type="text" [(ngModel)]="dat" placeholder="DD/MM/YYYY" maxlength="10" id="vadnt" class="form-control"
+        (keyup)="AddSlash($event)">
+    </div>
+
+    <div class="col-xs-12 col-12 col-md-6">
+      <label for="bikebdrancd">Enter Your Adhar Number</label>
+      <input type="text" [(ngModel)]="adhar" id="vadant" placeholder="Adhar Number" class="form-control"
+        (keyup)="AdharSpace($event)">
+    </div>
+
   </div>
-
 </div>
