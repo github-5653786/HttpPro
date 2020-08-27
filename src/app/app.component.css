@@ -36,3 +36,15 @@
 .modal-content {
     margin-top: -130%;
 }
+
+@media(max-width:768px) {
+    .mask {
+        height: auto;
+    }
+    .margin-bot {
+        margin-bottom: 50px;
+    }
+    .modal-content{
+        margin-top: -367%;
+    }
+}
