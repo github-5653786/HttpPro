@@ -11,7 +11,7 @@ export class MyserviceService {
 
   callBike(a: string) {
     var headers = new Headers({ 'Content-Type': 'application/json' });
-    let _url2: string = `${environment.BaseUri}/bike/variant/match/make_model/` + a;
+    let _url2: string = 'https://direct-prod-directportal.godigit.com/DirectPortal/bike/variant/match/make_model/' + a;
     return this.http.get(_url2, { headers });
   }
 
