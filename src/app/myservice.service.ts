@@ -16,18 +16,18 @@ export class MyserviceService {
   }
 
   posts(data: any) {
-    return this.http.post(`${environment.BaseUri}/bike/variant/match/characteristics`, data);
+    return this.http.post('https://direct-prod-directportal.godigit.com/DirectPortal/bike/variant/match/characteristics', data);
   }
 
   GetCode(flow: any) {
-    return this.http.get(`${environment.BaseUri}/cities/rtocode/region?regionCode=ka` + flow);
+    return this.http.get('https://direct-prod-directportal.godigit.com/DirectPortal/cities/rtocode/region?regionCode=ka' + flow);
   }
 
   GenerateOTP(Num: any) {
-    return this.http.get(`${environment.BaseUri}/generate/otp/` + Num);
+    return this.http.get('https://direct-prod-directportal.godigit.com/DirectPortal/generate/otp/' + Num);
   }
 
   ValidateOTP(Otp) {
-    return this.http.get(`${environment.BaseUri}/validate/otp/` + Otp)
+    return this.http.get('https://direct-prod-directportal.godigit.com/DirectPortal/validate/otp/' + Otp)
   }
 }
