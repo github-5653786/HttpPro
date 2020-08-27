@@ -8,32 +8,31 @@ export class DateOfBirthDirective {
   constructor(private eref: ElementRef) { }
 
   @HostListener('keyup', ['$event'])
-  inputs(event) {
+  addSlash(event) {
     var val = event.target.value;
-    var finalVal = val.trim();
-    finalVal = finalVal.split('-').join('');
 
-    if (finalVal.length === 1) {
-      let day = Number(finalVal)
+    if (val.length === 1) {
+      let day = Number(val);
       if (day > 3) {
-        finalVal = '0' + finalVal;
+        val = '0' + val;
       }
     }
-
-    if (event.keyCode != 8 && finalVal.length < 5) {
-      if (finalVal.length === 3) {
-        const monthNum = finalVal.charAt(2);
-        if (monthNum > 1) {
-          finalVal = [finalVal.slice(0, 2), '0', finalVal.slice(2)].join('');
+    if (event.keyCode != 8) {
+      if (val.length > 2) {
+        let month = val.charAt(3)
+        if (month > 1) {
+          val = [val.slice(0, 3), '0', val.slice(3)].join('');
         }
       }
-      if (finalVal.length > 1) {
-        finalVal = [finalVal.slice(0, 2), '-', finalVal.slice(2)].join('');
+
+      if (val.length === 2) {
+        val = [val.slice(0, 2), '-', val.slice(2)].join('');
       }
-      if (finalVal.length > 4) {
-        finalVal = [finalVal.slice(0, 5), '-', finalVal.slice(5)].join('');
+
+      if (val.length === 5) {
+        val = [val.slice(0, 5), '-', val.slice(5)].join('');
       }
-      event.target.value = finalVal;
+      event.target.value = val
     }
   }
 }

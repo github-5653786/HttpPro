@@ -10,7 +10,7 @@ export class AppComponent {
   bike = [];
   comman = [];
   varient = [];
-
+  openModal: boolean;
   Code = '';
   constructor(private ser: MyserviceService) { }
   selectBrand(e) {
@@ -97,7 +97,6 @@ export class AppComponent {
       this.ser.GetCode(finalval).subscribe((d) => {
         let data = d.json();
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i]);
           alert("City : " + data[i].registeredCityName + " State : " + data[i].registeredStateName);
           this.Code = '';
         }
@@ -141,13 +140,52 @@ export class AppComponent {
 
   AdharSpace(evt) {
     var adhar = evt.target.value;
-    if (adhar.length === 4) {
-      adhar = [adhar.slice(0, 4), ' ', adhar.slice(4)].join('');
+    if (evt.keyCode !== 8 && evt.keyCode !== 37 && evt.keyCode !== 38 && evt.keyCode !== 39 && evt.keyCode !== 40) {
+      if (adhar.length >= 4 && adhar.length < 6) {
+        adhar = [adhar.slice(0, 4), '-', adhar.slice(4)].join('');
+      }
+      if (adhar.length >= 9 && adhar.length < 11) {
+        adhar = [adhar.slice(0, 9), '-', adhar.slice(9)].join('');
+      }
+      evt.target.value = adhar;
     }
-    if (adhar.length === 9) {
-      adhar = [adhar.slice(0, 9), ' ', adhar.slice(9)].join('');
+  }
+
+  SendOTP(e) {
+    if (e !== undefined && e.length == 10) {
+      this.ser.GenerateOTP(e).subscribe((data) => {
+        let datas = data;
+        alert("OTP sent to your number");
+      },
+        error => {
+          console.log('Generate OTP error', error);
+        }
+      )
+    } else {
+      alert("Enter a valid number");
     }
-    evt.target.value = adhar;
+  }
+
+  Validate(e2) {
+    if (e2 !== undefined && e2.length == 6) {
+      this.ser.ValidateOTP(e2).subscribe(otpRes => {
+        if (otpRes.status === 204) {
+          alert("Enter Valid OTP......!")
+        } else {
+          alert("You Entered Correct OTP.")
+        }
+      },
+        error => {
+          console.log('Validate OTP error', error);
+        }
+      )
+    } else {
+      alert("Enter an OTP")
+    }
+  }
+
+  openOTPModal() {
+    this.openModal = !this.openModal;
   }
 }
 

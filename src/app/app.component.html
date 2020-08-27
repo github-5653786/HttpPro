@@ -1,14 +1,17 @@
-<div class="container">
-  <div class="row justify-content-center">
+<div class="container-fluid">
+  <div class=" justify-content-center">
     <p class="font-weight-bold align">Sample Pro for service interaction</p>
   </div>
-
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" (click)="openOTPModal()">
+    OTP modal
+  </button>
   <div class="row mask mt-5">
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebrancd">Enter Bike Brand</label>
-      <input [(ngModel)]="select" id="brand" (ngModelChange)="selectBrand($event)" style="text-transform: uppercase;"
-        (typeaheadOnSelect)="bikeBrandSelect($event)" [typeahead]="bike" class="form-control" toUpperCase
-        placeholder="Search Brand">
+      <input [(ngModel)]="select" id="bikebrand" (ngModelChange)="selectBrand($event)"
+         (typeaheadOnSelect)="bikeBrandSelect($event)" [typeahead]="bike"
+        class="form-control" placeholder="Search Brand">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
@@ -19,32 +22,33 @@
 
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebrancd">Enter your Phone Number</label>
-      <input type="text" OnlyNumbers="10" placeholder="Phone" name="fds" [(ngModel)]="inputs"
+      <input type="text" OnlyNumbers="10" placeholder="Phone" id="pnum" name="fds" [(ngModel)]="inputs"
         (ngModelChange)="input($event)" class="form-control">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebrancd">Enter your DOB</label>
-      <input type="text" name="dobs" placeholder="DD/MM/YYYY" (keyup)="dobWithSlash($event)" [(ngModel)]="dob"
+      <input type="text" name="dobs" id="dob" placeholder="DD/MM/YYYY" (keyup)="dobWithSlash($event)" [(ngModel)]="dob"
         class="form-control">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebrancd">Enter Vehicle Number</label>
-      <input type="text" (keyup)="go($event)" style="text-transform: uppercase;" name="dobss" maxlength="10"
-        placeholder="Enter Code" [(ngModel)]="Code" class="form-control">
+      <input type="text" id="bikebrancd" (keyup)="go($event)" style="text-transform: uppercase;" name="dobss"
+        maxlength="10" placeholder="Enter Code" [(ngModel)]="Code" class="form-control">
       <button type="button" id="btn" (click)="SendData(Code)" class="btn btn-primary">Send</button>
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
-      <label for="bikebdrancd">Enter Date Of Birth(My Own Practice)</label>
-      <input type="text" [(ngModel)]="dat" placeholder="DD-MM-YYYY" maxlength="10" id="vadnt" class="form-control"
-        (keyup)="AddSlash($event)">
+      <label for="bikebdrancsd">Enter Date Of Birth(My Own Practice)</label>
+      <input type="text" [(ngModel)]="dat" placeholder="DD-MM-YYYY" maxlength="10" id="bikebdrancsd"
+        class="form-control" (keyup)="AddSlash($event)">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
       <label for="bikebdrancd">Enter Date Of Birth(From Directive)</label>
-      <input type="text" [(ngModel)]="datess" maxlength="10" placeholder="DD-MM-YYYY" DateOfBirth id="vadnt" class="form-control">
+      <input type="text" [(ngModel)]="datess" maxlength="10" placeholder="DD-MM-YYYY" DateOfBirth id="vadnt"
+        class="form-control">
     </div>
 
     <div class="col-xs-12 col-12 col-md-6">
@@ -52,6 +56,34 @@
       <input type="text" OnlyNumbers="14" [(ngModel)]="adhar" id="vadant" placeholder="Adhar Number"
         class="form-control" (keyup)="AdharSpace($event)">
     </div>
-
   </div>
-</div>
+
+  <!-- OTP Modal -->
+  <div class="container" *ngIf="openModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">OTP Form</h5>
+          <button type="button" (click)="openOTPModal()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="SendOtp">Enter Number to get OTP</label>
+              <input type="text" autocapitalize="off" placeholder="Number" OnlyNumbers="10" [(ngModel)]="OtpNum"
+                class="form-control" name="OTP" id="SendOtp">
+            </div>
+            <div class="form-group">
+              <label for="OtpVaidate">Enter OTP To Validate</label>
+              <input type="text" OnlyNumbers="6" id="OtpVaidate" placeholder="OTP" [(ngModel)]="Valotp"
+                class="form-control" name="Validate">
+            </div>
+            <button (click)="SendOTP(OtpNum)" class="btn btn-primary mt-3"> Get OTP</button>&nbsp;
+            <button (click)="Validate(Valotp)" class="btn btn-primary mt-3">Validate OTP</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

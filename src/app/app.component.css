@@ -3,6 +3,14 @@
     width: 95%;
 }
 
+.capitalize {
+    text-transform: capitalize !important;
+}
+
+.container-fluid {
+    width: 90%;
+}
+
 .mask {
     background-color: #FFFFFF;
     border-radius: 20px;
@@ -17,10 +25,14 @@
 
 .row:hover {
     box-shadow: 0 1px 25px 0 rgba(32, 32, 32, .28);
-    transform: translateY(-1px);
+    transform: translateY(1px);
 }
 
 ::selection {
     color: #000;
     background-color: #FB0;
+}
+
+.modal-content {
+    margin-top: -130%;
 }

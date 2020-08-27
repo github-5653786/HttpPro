@@ -5,7 +5,7 @@ import { Directive, ElementRef, OnInit, HostListener, Input } from '@angular/cor
 export class CheckNumDirective {
   @Input()
   OnlyNumbers: number;
-  //In this code we allowed the user to enter only numbers and only 10 number
+  //In this code we allowed the user to enter only charectors and only 10 number
   constructor(private el: ElementRef) { }
   @HostListener('keydown', ['$event'])
   onKeyDown(event) {
